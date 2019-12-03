@@ -1,0 +1,43 @@
+version: "3.7"
+services:
+
+  namenode:
+    image: simonwt/ds_python_dfs:namenode
+    volumes:
+      - ./src:/app/src
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+           - node.id == yqocne4ukmuvty3tuajepwrfz
+    ports:
+      - target: 55555
+        published: 55555
+
+
+  datanode1:
+    image: simonwt/ds_python_dfs:datanode
+    environment:
+      - NODE_PORT=22800
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 22800:22800
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+           - node.id == z7wtm6s0ivdbp54y79l5u0k5j
+
+  datanode2:
+    image: simonwt/ds_python_dfs:datanode
+    environment:
+      - NODE_PORT=22801
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 22801:22801
+    deploy:
+      placement:
+        constraints:
+           - node.id == gt6a83kpudggcnrwc5zu5dly

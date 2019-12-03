@@ -279,7 +279,11 @@ class Master(Node):
     @_response
     @_file_not_found
     def copy(self, filename, copy_dir):
-        files_in_copy_dir = self.dir_to_files.get(copy_dir)
+        copy_full_path = copy_dir
+        for dir_path in list(self.dir_to_files):
+            if dir_path.split('/')[-1] == copy_dir:
+                copy_full_path = dir_path
+        files_in_copy_dir = self.dir_to_files.get(copy_full_path)
 
         if files_in_copy_dir is None:
             raise FileNotFoundError('Directory does not exist')
@@ -293,7 +297,11 @@ class Master(Node):
     @_response
     @_file_not_found
     def move(self, filename, move_dir):
-        files_in_move_dir = self.dir_to_files.get(move_dir)
+        move_full_path = move_dir
+        for dir_path in list(self.dir_to_files):
+            if dir_path.split('/')[-1] == move_dir:
+                move_full_path = dir_path
+        files_in_move_dir = self.dir_to_files.get(move_full_path)
 
         if files_in_move_dir is None:
             raise FileNotFoundError('Directory does not exist')
