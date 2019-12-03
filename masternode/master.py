@@ -1,4 +1,5 @@
 import asyncio
+import json
 import os
 import random as rm
 from functools import wraps
@@ -129,6 +130,7 @@ class Master(Node):
 
     async def send_delete(self, chunk, host, port):
         uri = f'ws://{host}:{port}'
+        await asyncio.sleep(2)
         async with websockets.connect(uri) as websocket:
             await websocket.send(f'delete {chunk}')
 
@@ -138,19 +140,58 @@ class Master(Node):
             await websocket.send(f'Are you sure that you want to {action} {str(*params)}')
             return await websocket.recv()
 
+    async def delete_old_chunks(self, host, port):
+        uri = f'ws://{host}:{port}'
+        await asyncio.sleep(3)
+        async with websockets.connect(uri) as websocket:
+            await websocket.send('list')
+            response = json.loads(await websocket.recv())
+            chunks = response.get('body', [])
+        for ch in chunks:
+            replicas = self.chunk_to_replicas.get(ch)
+            if replicas is None:
+                async with websockets.connect(uri) as websocket:
+                    await websocket.send(f'delete {ch}')
+
+    async def make_additional_replicas(self, host, port):
+        uri = f'ws://{host}:{port}'
+        for chunk, replicas in self.chunk_to_replicas.items():
+            live_replica = ()
+            contains_replica = False
+            actual_replicas = 0
+            for r_host, r_port in replicas:
+                for s_host, s_port, s_is_alive in self.stores:
+                    if r_host == host and r_port == port:
+                        contains_replica = True
+                    if r_host == s_host and r_port == s_port and not s_is_alive:
+                        break
+                else:
+                    live_replica = (r_host, r_port)
+                    actual_replicas += 1
+            if actual_replicas < self.REPLICAS_NUM and not contains_replica:
+                live_host, live_port = live_replica
+                live_uri = f'ws://{live_host}:{live_port}'
+                async with websockets.connect(live_uri) as live_socket:
+                    await live_socket.send(f'read {chunk}')
+                    response = json.loads(await live_socket.recv())
+                    chunk_data = response.get('body')
+                async with websockets.connect(uri) as websocket:
+                    await websocket.send(f'write {chunk} {chunk_data}')
+
     @_response
     def connect(self, storage_net_info):
         storage_host, storage_port = storage_net_info.split(':')
         for storage in self.stores:
             host, port, is_alive = storage
             if host == storage_host and port == storage_port:
-                # TODO add check is it was dead and update
                 ind = self.stores.index(storage)
                 self.stores[ind] = (host, port, True)
                 print(f'Reconnect to storage: {storage_host}:{storage_port}')
+                asyncio.gather(self.delete_old_chunks(host, port), self.make_additional_replicas(host, port))
                 break
         else:
             self.stores.append((storage_host, storage_port, True))
+            asyncio.gather(self.make_additional_replicas(storage_host, storage_port))
             print(f'Connect to storage: {storage_host}:{storage_port}')
         return 'Success connect'
 
@@ -314,18 +355,19 @@ class Master(Node):
         # has_files = len(self.dir_to_files[dir_full_name]) > 0
         has_sub_dirs = len(children[dir_index].children) > 0
         if not recursive and (has_files or has_sub_dirs):
-            answer = await self.ask_confirmation('delete', dir_name)
-            answer = str(answer).lower()
-            print('answer: ', answer)
-            if answer == 'yes' or answer == 'y' or answer == '':
-                file_list = self.dir_to_files.get(dir_full_name, [])
-                sub_dirs_list = [ch.path.split('/')[-1] for ch in children]
-                for sub_dir in sub_dirs_list:
-                    self.delete_dir(sub_dir, recursive=True)
-                for filename in file_list:
-                    self.delete(filename)
-            else:
-                return 'Canceled deleting'
+            # TODO fix confirmation
+            # answer = asyncio.gather(self.ask_confirmation('delete', dir_name), asyncio.get_event_loop())
+            # answer = str(answer).lower()
+            # print('answer: ', answer)
+            # if answer == 'yes' or answer == 'y' or answer == '':
+            file_list = self.dir_to_files.get(dir_full_name, [])
+            sub_dirs_list = [ch.path.split('/')[-1] for ch in children]
+            for sub_dir in sub_dirs_list:
+                self.delete_dir(sub_dir, recursive=True)
+            for filename in file_list:
+                self.delete(filename)
+            # else:
+            #     return 'Canceled deleting'
         del self.dir_to_files[dir_full_name]
         self.dir_tree.remove(dir_full_name)
         if not recursive:

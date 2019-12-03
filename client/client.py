@@ -28,8 +28,7 @@ class Client(Node):
 
         if response.get('confirmation') is not None:
             answer = input('[CONFIRMATION]: ' + response['confirmation'])
-            await websocket.send(answer)
-            response = json.loads(await websocket.recv())
+            response = await websocket.send(answer)
 
         return response.get('body', response.get('error'))
 
@@ -117,7 +116,6 @@ async def main():
         in_cmd = input('Enter a command: ')
         try:
             async with websockets.connect(uri) as websocket:
-                print('address: ', websocket.local_address)
                 command = in_cmd.split(' ')[0]
                 print(await cl.command_map.get(command, cl.error)(cl, websocket, in_cmd))
         except Exception as err:

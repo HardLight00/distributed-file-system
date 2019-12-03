@@ -99,12 +99,17 @@ class DataNode(Node):
                 total_sum += os.path.getsize(f'{self.ROOT_FOLDER}/{file}')
         return total_sum
 
+    @_response
+    def get_data(self):
+        return self.data
+
     command_map = {
         'ping': ping,
         'free': get_free_space,
         'read': read,
         'write': write,
         'delete': delete,
+        'list': get_data
     }
 
 
