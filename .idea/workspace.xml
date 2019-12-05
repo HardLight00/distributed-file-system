@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b140d55-845c-4224-b3cb-0a924542afed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/large_file.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/node.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datanode/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datanode/node.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datanode/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-build/docker-compose.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/masternode/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/masternode/node.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/masternode/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datanode/datanode.py" beforeDir="false" afterPath="$PROJECT_DIR$/datanode/datanode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/masternode/master.py" beforeDir="false" afterPath="$PROJECT_DIR$/masternode/master.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-build/docker-compose.yaml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +63,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.datanode:8770">
+  <component name="RunManager" selected="Python.datanode:8767">
     <configuration name="Unnamed" type="BashConfigurationType" factoryName="Bash" nameIsGenerated="true">
       <module name="distributed-file-system" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -290,8 +278,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.client" />
         <item itemvalue="Python.datanode:8765" />
+        <item itemvalue="Python.client" />
         <item itemvalue="Python.master " />
       </list>
     </recent_temporary>
@@ -311,7 +299,7 @@
       <workItem from="1575118580985" duration="39237000" />
       <workItem from="1575273469227" duration="13865000" />
       <workItem from="1575313972267" duration="29736000" />
-      <workItem from="1575351006208" duration="32744000" />
+      <workItem from="1575351006208" duration="34388000" />
     </task>
     <task id="LOCAL-00001" summary="Remove unused files">
       <created>1575311066613</created>
@@ -355,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575380844622</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updates">
+      <created>1575387566616</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1575387566616</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,7 +376,8 @@
     <MESSAGE value="Do main work" />
     <MESSAGE value="Fix deleting and updating" />
     <MESSAGE value="README" />
-    <option name="LAST_COMMIT_MESSAGE" value="README" />
+    <MESSAGE value="Updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -395,16 +391,16 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/distributed_file_system$datanode_8767.coverage" NAME="datanode:8767 Coverage Results" MODIFIED="1575387532576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datanode" />
+    <SUITE FILE_PATH="coverage/distributed_file_system$datanode_8767.coverage" NAME="datanode:8767 Coverage Results" MODIFIED="1575389887085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datanode" />
     <SUITE FILE_PATH="coverage/distributed_file_system$datanode_8769.coverage" NAME="datanode:8769 Coverage Results" MODIFIED="1575386700150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datanode" />
-    <SUITE FILE_PATH="coverage/distributed_file_system$datanode_8766.coverage" NAME="datanode:8766 Coverage Results" MODIFIED="1575387498608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datanode" />
+    <SUITE FILE_PATH="coverage/distributed_file_system$datanode_8766.coverage" NAME="datanode:8766 Coverage Results" MODIFIED="1575389583105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datanode" />
     <SUITE FILE_PATH="coverage/distributed_file_system$datanode.coverage" NAME="datanode:8765 Coverage Results" MODIFIED="1575350740777" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datanode" />
     <SUITE FILE_PATH="coverage/distributed_file_system$master__1_.coverage" NAME="master (1) Coverage Results" MODIFIED="1575313394206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/master-2" />
     <SUITE FILE_PATH="coverage/distributed_file_system$datanode_8770.coverage" NAME="datanode:8770 Coverage Results" MODIFIED="1575386706225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datanode" />
-    <SUITE FILE_PATH="coverage/distributed_file_system$datanode_8765.coverage" NAME="datanode:8765 Coverage Results" MODIFIED="1575387496383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datanode" />
-    <SUITE FILE_PATH="coverage/distributed_file_system$client.coverage" NAME="client Coverage Results" MODIFIED="1575387513956" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/client" />
-    <SUITE FILE_PATH="coverage/distributed_file_system$datanode_8768.coverage" NAME="datanode:8768 Coverage Results" MODIFIED="1575386695877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datanode" />
-    <SUITE FILE_PATH="coverage/distributed_file_system$master_.coverage" NAME="master  Coverage Results" MODIFIED="1575387494454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/masternode" />
+    <SUITE FILE_PATH="coverage/distributed_file_system$datanode_8765.coverage" NAME="datanode:8765 Coverage Results" MODIFIED="1575389580346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datanode" />
+    <SUITE FILE_PATH="coverage/distributed_file_system$client.coverage" NAME="client Coverage Results" MODIFIED="1575389577700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/client" />
+    <SUITE FILE_PATH="coverage/distributed_file_system$datanode_8768.coverage" NAME="datanode:8768 Coverage Results" MODIFIED="1575388212920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datanode" />
+    <SUITE FILE_PATH="coverage/distributed_file_system$master_.coverage" NAME="master  Coverage Results" MODIFIED="1575389575123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/masternode" />
     <SUITE FILE_PATH="coverage/distributed_file_system$master.coverage" NAME="master Coverage Results" MODIFIED="1575314825914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/masternode" />
   </component>
 </project>
